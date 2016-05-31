@@ -1,25 +1,43 @@
-angular.module('songhop.controllers', ['ionic', 'songhop.services'])
+angular.module('songhop')
 
 
+.controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
+  $scope.showMenu = function () {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+  $scope.showRightMenu = function () {
+    $ionicSideMenuDelegate.toggleRight();
+  };
+})
 /*
-Controller for the discover page
+Controller for the authorization page
 */
-.controller('DiscoverCtrl', function($scope) {
+.controller('AuthorizationCtrl', function($scope, $state) {
+	$scope.authorization = {
+	    username: '',
+	    password : ''   
+	};  
+   
+  $scope.signIn = function(form) {
+    if(form.$valid) {
+      $state.go('tab.discover');
+    }
+  };  
+
 
 })
 
-
-/*
-Controller for the favorites page
-*/
-.controller('FavoritesCtrl', function($scope) {
-
-})
 
 
 /*
 Controller for our tab bar
 */
 .controller('TabsCtrl', function($scope) {
+   $scope.toggleLeftSideMenu = function() {
+      $ionicSideMenuDelegate.toggleLeft();
+   };
 
-});
+
+})
+
+

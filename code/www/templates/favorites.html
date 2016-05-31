@@ -1,24 +1,83 @@
 <ion-view view-title="Favorites" class="favorites-page">
+<ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
   <ion-content>
 
-    <ion-list>
-      <ion-item class="item-avatar">
-        <img ng-src="/img/ionic.png">
-        <h2>I keep it realtime yo</h2>
-        <p>James Tamplin</p>
-      </ion-item>
-      <ion-item class="item-avatar">
-        <img ng-src="/img/ionic.png">
-        <h2>99 compiler errors</h2>
-        <p>Jake Hanford</p>
-      </ion-item>
-      <ion-item class="item-avatar">
-        <img ng-src="/img/ionic.png">
-        <h2>So many stacks they overflowin'</h2>
-        <p>Brian Gallagher</p>
-      </ion-item>
-    </ion-list>
-    
+<button class="button button-full button-dark" ng-click="takePhoto()">
+Take Photo
+</button>
+<button class="button button-full button-dark" ng-click="choosePhoto()">
+Choose Photo
+</button>
+<img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="text-align: center">
 
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="Search" ng-model="searchText">
+    </label>
+    <scroll direction="y"> 
+    <ion-list>
+      <ion-item class="item-avatar" ng-repeat="item in sampleData | filter:searchText"  >
+      <img ng-src="/img/ionic.png">
+      {{item.key}}
+      </ion-item>
+      <ion-checkbox ng-model="checkboxModel.value1">Checkbox 1</ion-checkbox>
+      <ion-checkbox ng-model="checkboxModel.value2">Checkbox 2</ion-checkbox>
+    </ion-list>
+    <li class="item item-toggle">
+     Toggle 1
+     <label class="toggle">
+       <input type="checkbox">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+   </li>
+   <li class="item item-toggle">
+     Toggle 2
+     <label class="toggle">
+       <input type="checkbox">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+   </li>
+   <div class="list">
+
+   <label class="item item-radio">
+      <input type="radio" name="group1">
+      <div class="item-content">
+         Choice 1
+      </div>
+      <i class="radio-icon ion-checkmark"></i>
+   </label>
+
+   <label class="item item-radio">
+      <input type="radio" name="group1">
+      <div class="item-content">
+         Choice 2
+      </div>
+      <i class="radio-icon ion-checkmark"></i>
+   </label>
+
+   <label class="item item-radio">
+      <input type="radio" name="group1">
+      <div class="item-content">
+         Choice 3
+      </div>
+      <i class="radio-icon ion-checkmark"></i>
+   </label>
+
+   <label class="item item-radio">
+      <input type="radio" name="group1">
+      <div class="item-content">
+         Choice 4
+      </div>
+      <i class="radio-icon ion-checkmark"></i>
+   </label>
+
+</div>
+   <ion-item class="item-avatar"></ion-item>
   </ion-content>
 </ion-view>

@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('songhop', ['ionic', 'songhop.controllers'])
+angular.module('songhop', ['ionic', 'ngMessages', 'songhop.services', 'ngCordova' ])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -38,6 +38,8 @@ angular.module('songhop', ['ionic', 'songhop.controllers'])
     controller: 'TabsCtrl'
   })
 
+  
+
   // Each tab has its own nav history stack:
 
   .state('tab.discover', {
@@ -45,7 +47,12 @@ angular.module('songhop', ['ionic', 'songhop.controllers'])
     views: {
       'tab-discover': {
         templateUrl: 'templates/discover.html',
-        controller: 'DiscoverCtrl'
+        controller: 'DiscoverCtrl',
+        'menuContent' :{
+
+          templateUrl: "search.html"
+
+        }
       }
     }
   })
@@ -59,6 +66,28 @@ angular.module('songhop', ['ionic', 'songhop.controllers'])
         }
       }
     })
+  .state('tab.authorization', {
+    url: '/authorization',
+    views: {
+      'tab-authorization': {
+        templateUrl: 'templates/authorization.html',
+        controller: 'AuthorizationCtrl',
+        'menuContent' :{
+          templateUrl: "search.html"
+
+        }
+      }
+    }
+  })
+  .state('tab.pagos', {
+    url: '/pagos',
+    views: {
+      'tab-pagos': {
+        templateUrl: 'templates/pagos.html',
+        controller: 'PagosCtrl',
+      }
+    }
+  })
   // If none of the above states are matched, use this as the fallback:
   $urlRouterProvider.otherwise('/tab/discover');
 
